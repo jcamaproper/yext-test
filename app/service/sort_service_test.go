@@ -21,13 +21,13 @@ func TestSortPayload(t *testing.T) {
 				SortKeys: []string{"fruits", "numbers"},
 				Payload: map[string]interface{}{
 					"fruits":  []interface{}{"banana", "apple", "orange"},
-					"numbers": []interface{}{3, 1.0, 2.0},
+					"numbers": []interface{}{1333.0, 4.0, 2431.0, 7.0}, // The json package converts numbers to float64 when decoding
 					"colors":  []interface{}{"red", "blue", "green"},
 				},
 			},
 			expected: map[string]interface{}{
 				"fruits":  []interface{}{"apple", "banana", "orange"},
-				"numbers": []interface{}{1.0, 2.0, 3.0},
+				"numbers": []interface{}{4.0, 7.0, 1333.0, 2431.0},
 				"colors":  []interface{}{"red", "blue", "green"},
 			},
 			expectErr: false,
